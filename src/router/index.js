@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
-
+import Index from '@/components/Index'
+import Login from '@/components/authen/view/Login'
+import auth from '@/middleware/auth'
+import guest from '@/middleware/guest'
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
-})
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    meta: {
+      middleware: [auth]
+    },
+    component: Index
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      middleware: [guest]
+    },
+    component: Login
+  }
+]
+
+export default routes
