@@ -2,6 +2,7 @@ import Utility from '@/helpers/Utility'
 import UserService from '../api/index'
 import ConfigAxios from '@/helpers/ConfigAxios'
 
+const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 const AUTH_SET_USER = 'AUTH_SET_USER'
 const AUTH_SET_ERROR = 'AUTH_SET_ERROR'
 const AUTH_SET_TOKEN = 'AUTH_SET_TOKEN'
@@ -10,6 +11,7 @@ const AUTH_SET_LOGGED_IN = 'AUTH_SET_LOGGED_IN'
 
 const state = {
   loading: false,
+  statusRegister: null,
   token: null,
   loggedIn: false,
   user: {},
@@ -21,6 +23,10 @@ const getters = {
   }
 }
 const mutations = {
+  [REGISTER_SUCCESS] (state, statusRegister) {
+    state.statusRegister = statusRegister
+  },
+
   [AUTH_SET_USER] (state, user) {
     state.user = user
   },
@@ -47,6 +53,21 @@ const mutations = {
 }
 
 const actions = {
+  async register ({ state, commit }, user) {
+    commit(AUTH_SET_LOADING, true)
+    commit(REGISTER_SUCCESS, null)
+    try {
+      await UserService.register(user)
+      commit(REGISTER_SUCCESS, true)
+      commit(AUTH_SET_ERROR, { error: [] })
+    } catch (err) {
+      commit(AUTH_SET_ERROR, { error: err })
+    }
+    commit(AUTH_SET_LOADING, false)
+
+    return state.statusRegister
+  },
+
   async login ({ state, commit }, user) {
     commit(AUTH_SET_LOADING, true)
     try {
@@ -90,7 +111,6 @@ const actions = {
       commit(AUTH_SET_USER, infoUser.data)
       commit(AUTH_SET_LOGGED_IN, true)
     } catch (err) {
-      commit(AUTH_SET_ERROR, {error: err})
       ConfigAxios.setAuthorizationHeader()
     }
     commit(AUTH_SET_LOADING, true)

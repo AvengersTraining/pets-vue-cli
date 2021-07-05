@@ -52,7 +52,9 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  padding-bottom: 10vh;
 }
 a {
   text-decoration: none;

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
 import Login from '@/components/authen/view/Login'
+import Register from '@/components/authen/view/Register'
 import auth from '@/middleware/auth'
 import guest from '@/middleware/guest'
 Vue.use(Router)
@@ -22,6 +23,14 @@ const routes = [
       middleware: [guest]
     },
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    meta: {
+      middleware: [guest]
+    },
+    component: Register
   }
 ]
 

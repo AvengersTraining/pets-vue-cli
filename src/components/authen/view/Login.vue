@@ -1,7 +1,7 @@
 <template>
   <div class="pt-5">
     <b-form class="bg-light w-50 form-authen">
-      <h1 class="mb-5 text-center">Login</h1>
+      <h1 class="mb-5 text-center">{{ $t('authen.login') }}</h1>
       <span class="text-error" v-if="errors && errors.code == 401">
         {{ $t('authen.message.login_infor_incorrect') }}
       </span>
@@ -33,7 +33,7 @@
 
       <div class="mt-5 text-center">
         <b-button @click="onSubmit" type="button" variant="primary">{{ $t('common.submit') }}</b-button>
-        <b-link to="#">{{ $t('authen.register') }}</b-link>
+        <router-link to="/register">{{ $t('authen.register') }}</router-link>
       </div>
     </b-form>
   </div>

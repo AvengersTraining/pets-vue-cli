@@ -4,16 +4,40 @@
     "user": "User",
     "profile": "Profile",
     "sign_out": "Sign out",
-    "submit": "Submit"
+    "submit": "Submit",
+    "well_done": "Well done!"
   },
   "authen": {
+    "login": "Login",
     "register": "Register",
     "message": {
-      "login_infor_incorrect": "Login information is incorrect"
+      "login_infor_incorrect": "Login information is incorrect",
+      "username_or_email_exist": "This username or email is exist",
+      "register_succest": "Successful account registration"
     },
     "placeholder": {
       "username": "Enter username",
-      "password": "Enter password"
+      "password": "Enter password",
+      "password_confirm": "Enter password confirm",
+      "email": "Enter email",
+      "address": "Enter address",
+      "tel": "Enter tel"
+    },
+    "field": {
+      "username": "*Username:",
+      "password": "*Password:",
+      "password_confirm": "*Password confirm:",
+      "email": "*Email:",
+      "type": "*Type:",
+      "open_time": "Open time",
+      "close_time": "Close time",
+      "address": "Address",
+      "tel": "Tel"
+    },
+    "location_type": {
+      "veterinary_hospital": "veterinary hospital",
+      "veterinary_center": "veterinary center",
+      "cat_island": "cat island"
     }
   }
 }
