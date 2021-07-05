@@ -1,0 +1,19 @@
+{
+  "common": {
+    "home": "Home",
+    "user": "User",
+    "profile": "Profile",
+    "sign_out": "Sign out",
+    "submit": "Submit"
+  },
+  "authen": {
+    "register": "Register",
+    "message": {
+      "login_infor_incorrect": "Login information is incorrect"
+    },
+    "placeholder": {
+      "username": "Enter username",
+      "password": "Enter password"
+    }
+  }
+}
