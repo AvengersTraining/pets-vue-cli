@@ -1,6 +1,10 @@
 import axios from 'axios'
 
 export default class UserService {
+  static register (user) {
+    return axios.post('register', user)
+  }
+
   static login (user) {
     return axios.post('login', user, {
       'username': user.username,

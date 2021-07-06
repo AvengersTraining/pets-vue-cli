@@ -23,24 +23,21 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  store.dispatch('storeAuthen/initAuth')
-    .then((res) => {
-      if (!to.meta.middleware) {
-        return next()
-      }
-      const middleware = to.meta.middleware
+  if (!to.meta.middleware) {
+    return next()
+  }
+  const middleware = to.meta.middleware
 
-      const context = {
-        to,
-        from,
-        next,
-        store: store
-      }
-      return middleware[0]({
-        ...context,
-        next: middlewarePipeline(context, middleware, 1)
-      })
-    })
+  const context = {
+    to,
+    from,
+    next,
+    store: store
+  }
+  return middleware[0]({
+    ...context,
+    next: middlewarePipeline(context, middleware, 1)
+  })
 })
 
 /* eslint-disable no-new */

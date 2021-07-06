@@ -1,9 +1,19 @@
-export default function auth ({ next, store }) {
-  if (!store.state.storeAuthen.loggedIn) {
+export default async function auth ({ next, store }) {
+  if (!localStorage.getItem('token')) {
     return next({
       name: 'login'
     })
-  }
+  } else {
+    if (!store.state.storeAuthen.loggedIn) {
+      await store.dispatch('storeAuthen/initAuth')
 
-  return next()
+      if (!store.state.storeAuthen.loggedIn) {
+        return next({
+          name: 'login'
+        })
+      }
+    }
+
+    return next()
+  }
 }
