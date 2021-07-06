@@ -3,18 +3,21 @@ import Vuex from 'vuex'
 import App from '@/App'
 import { store } from '@/store'
 import routes from '@/router'
-import BootstrapVue from 'bootstrap-vue'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import i18n from '@/plugins/i18n'
 import axios from 'axios'
 import VueRouter from 'vue-router'
 import middlewarePipeline from '@/router/middlewarePipeline'
+import Toasted from 'vue-toasted'
 
 axios.defaults.baseURL = 'https://pet-rescue-api-haolt.herokuapp.com/api/v1'
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token')
 Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 Vue.use(Vuex)
+Vue.use(Toasted)
 Vue.config.productionTip = false
 
 const router = new VueRouter({
