@@ -10,11 +10,16 @@
     "well_done": "Well done!",
     "btn_create": "Create",
     "btn_edit": "Edit",
+    "btn_delete": "Delete",
     "btn_submit": "Submit",
     "actions": "Actions",
     "sort_by": "Sorting By:",
     "sort_direction": "Sort Direction:",
-    "is_required": " is required"
+    "is_required": " is required",
+    "alert": {
+      "failed": "Request is failed",
+      "success": "Request is success"
+    }
   },
   "authen": {
     "login": "Login",
@@ -54,9 +59,12 @@
   "pet": {
     "list": "List pets",
     "new_pet": "New pet",
+    "update_pet": "Update pet code",
+    "confirm_delete_title": "Confirm delete pet",
     "message": {
       "create_success": "New pets added successfully",
-      "name_exist": "This name is exist"
+      "name_exist": "This name is exist",
+      "confirm_delete": "Do you want to delete pet id "
     },
     "field": {
       "id": "ID",
