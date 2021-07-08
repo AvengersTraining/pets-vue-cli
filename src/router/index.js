@@ -7,6 +7,7 @@ import Pets from '@/components/pet/view/List'
 import Profile from '@/components/authen/view/Profile'
 import auth from '@/middleware/auth'
 import guest from '@/middleware/guest'
+import Posts from '@/components/post/view/List'
 Vue.use(Router)
 
 const routes = [
@@ -49,6 +50,14 @@ const routes = [
       middleware: [auth]
     },
     component: Profile
+  },
+  {
+    path: '/posts',
+    name: 'posts',
+    meta: {
+      middleware: [auth]
+    },
+    component: Posts
   }
 ]
 
