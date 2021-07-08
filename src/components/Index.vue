@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <h1 class="text-home">{{ $t('home') }}</h1>
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
-body {
+#home {
   background-image: url("../assets/background.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;

@@ -1,7 +1,7 @@
 <template>
   <div id="pets">
     <h1 class="mb-3">{{ $t('pet.list') }}</h1>
-    <b-button v-b-modal.modal-prevent-closing type="button" size="sm" variant="primary" class="mb-3 float-end">
+    <b-button @click="showModalUpdateOrCreate(null)" type="button" size="sm" variant="primary" class="mb-3 float-end">
       <b-icon icon="plus"></b-icon>{{ $t('common.btn_create') }}</b-button>
     <div id="list-pets">
       <b-table
@@ -18,11 +18,11 @@
         responsive="sm"
       >
         <template #cell(actions)="row">
-          <b-button size="sm" class="mr-2 btn" variant="primary">
+          <b-button @click="showModalUpdateOrCreate(row.item.id)" size="sm" class="mr-2 btn" variant="primary">
             {{ $t('common.btn_edit') }}
           </b-button>
-          <b-button size="sm" class="mr-2 btn btn-danger">
-            {{ $t('common.btn_edit') }}
+          <b-button @click="showModalConfirmDelete(row.item.id)" size="sm" class="mr-2 btn btn-danger">
+            {{ $t('common.btn_delete') }}
           </b-button>
         </template>
         <template #cell(avatar)="data">
@@ -35,7 +35,16 @@
         <b>{{ sortDesc ? 'Descending' : 'Ascending' }}</b>
       </div>
     </div>
-    <form-modal @updatePets="pets = $event"></form-modal>
+    <form-modal :id="editingId" @updatePets="pets = $event"></form-modal>
+    <b-modal v-model="modalDeleteShow">Do you want to delete pet id {{ deleteId }}</b-modal>
+    <b-modal
+      id="modal-confirm-delete"
+      ref="modal"
+      v-bind:title="$t('pet.confirm_delete_title')"
+      @ok="handleDelete"
+    >
+      {{ $t('pet.message.confirm_delete') }} {{ deleteId }}
+    </b-modal>
   </div>
 </template>
 
@@ -52,6 +61,9 @@ export default {
     return {
       sortBy: 'age',
       sortDesc: true,
+      editingId: null,
+      deleteId: null,
+      modalDeleteShow: false,
       fields: [
         { key: 'id', sortable: true, label: this.$t('pet.field.id') },
         { key: 'avatar', sortable: false, label: this.$t('pet.field.avatar'), tdClass: 'text-center', thClass: 'text-center' },
@@ -72,6 +84,27 @@ export default {
       })
   },
   methods: {
+    async showModalUpdateOrCreate (id = null) {
+      this.editingId = id
+      this.$bvModal.show('modal-prevent-closing')
+    },
+    showModalConfirmDelete (id) {
+      this.deleteId = id
+      this.$bvModal.show('modal-confirm-delete')
+    },
+    async handleDelete () {
+      await this.$store.dispatch('storePet/delete', this.deleteId)
+        .then((res) => {
+          if (res) {
+            this.$bvModal.hide('modal-confirm-delete')
+            this.deleteId = null
+            this.$store.dispatch('storePet/getList')
+              .then((res) => {
+                this.pets = res
+              })
+          }
+        })
+    }
   }
 }
 </script>
