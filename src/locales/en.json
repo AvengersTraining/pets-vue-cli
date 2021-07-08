@@ -1,11 +1,20 @@
 {
   "common": {
     "home": "Home",
+    "pet": "Pet",
+    "post": "Post",
     "user": "User",
     "profile": "Profile",
     "sign_out": "Sign out",
     "submit": "Submit",
-    "well_done": "Well done!"
+    "well_done": "Well done!",
+    "btn_create": "Create",
+    "btn_edit": "Edit",
+    "btn_submit": "Submit",
+    "actions": "Actions",
+    "sort_by": "Sorting By:",
+    "sort_direction": "Sort Direction:",
+    "is_required": " is required"
   },
   "authen": {
     "login": "Login",
@@ -40,5 +49,48 @@
       "cat_island": "cat island"
     }
   },
-  "home": "Welcome to Thao Eel"
+  "home": "Welcome to Thao Eel",
+  "pet": {
+    "list": "List pets",
+    "new_pet": "New pet",
+    "message": {
+      "create_success": "New pets added successfully",
+      "name_exist": "This name is exist"
+    },
+    "field": {
+      "id": "ID",
+      "avatar": "Avatar",
+      "name": "Name",
+      "age": "Age",
+      "gender": "Gender",
+      "type": "Type",
+      "color": "Color",
+      "status": "Status",
+      "created_at": "Created at",
+      "updated_at": "Updated at",
+      "description": "Description"
+    },
+    "placeholder": {
+      "avatar": "Enter link avatar",
+      "name": "Enter name",
+      "age": "Enter age",
+      "color": "Enter color",
+      "description": "Enter description"
+    },
+    "options": {
+      "gender": {
+        "male": "Male",
+        "female": "Female"
+      },
+      "type": {
+        "dog": "Dog",
+        "cat": "Cat"
+      },
+      "status": {
+        "not_recovered_yet": "Not recovered yet",
+        "adopt": "Adopt",
+        "posted": "Posted"
+      }
+    }
+  }
 }
