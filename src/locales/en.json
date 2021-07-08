@@ -33,6 +33,7 @@
       "tel": "Enter tel"
     },
     "field": {
+      "avatar": "Avatar",
       "username": "*Username:",
       "password": "*Password:",
       "password_confirm": "*Password confirm:",
@@ -92,5 +93,18 @@
         "posted": "Posted"
       }
     }
+  },
+  "user": {
+    "name": "Username",
+    "email": "Email",
+    "tel": "Tel",
+    "address": "Address",
+    "type": "Type"
+  },
+  "btn": {
+    "update": "Update"
+  },
+  "errors": {
+    "email_required": "The email field is required."
   }
 }

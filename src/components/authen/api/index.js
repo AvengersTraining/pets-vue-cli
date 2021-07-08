@@ -19,4 +19,16 @@ export default class UserService {
   static getProfile () {
     return axios.get('profile')
   }
+
+  static getUserInformation () {
+    return axios.get('profile')
+      .then(response => response)
+      .catch(error => error)
+  }
+
+  static updateUserInformation (params) {
+    return axios.put('profile', params)
+      .then(response => response)
+      .catch(error => error)
+  }
 }

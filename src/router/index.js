@@ -4,6 +4,7 @@ import Index from '@/components/Index'
 import Login from '@/components/authen/view/Login'
 import Register from '@/components/authen/view/Register'
 import Pets from '@/components/pet/view/List'
+import Profile from '@/components/authen/view/Profile'
 import auth from '@/middleware/auth'
 import guest from '@/middleware/guest'
 Vue.use(Router)
@@ -40,6 +41,14 @@ const routes = [
       middleware: [auth]
     },
     component: Pets
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    meta: {
+      middleware: [auth]
+    },
+    component: Profile
   }
 ]
 

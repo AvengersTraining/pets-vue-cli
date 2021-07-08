@@ -16,9 +16,10 @@
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown right>
             <template #button-content>
-              <span class="text-light">{{ $t('common.user') }}</span>
+              <b-avatar :src="user.avatar"></b-avatar>
+              <span class="text-light">{{ user.username }}</span>
             </template>
-            <b-dropdown-item href="#">{{ $t('common.profile') }}</b-dropdown-item>
+            <b-dropdown-item href="/profile">{{ $t('common.profile') }}</b-dropdown-item>
             <b-dropdown-item @click="logout">{{ $t('common.sign_out') }}</b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -31,19 +32,17 @@
 <script>
 import '@/assets/css/main.css'
 import auth from './helpers/auth'
+import {mapState} from 'vuex'
 export default {
   name: 'App',
-  data () {
-    return {
-      user: null
-    }
-  },
   computed: {
+    ...mapState({
+      user: state => state.storeAuthen.user
+    }),
     loggedIn: function () {
       return auth.isAuth()
     }
   },
-
   methods: {
     async logout () {
       await this.$store.dispatch('storeAuthen/logout')

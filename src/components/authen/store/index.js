@@ -12,6 +12,7 @@ const AUTH_SET_LOGGED_IN = 'AUTH_SET_LOGGED_IN'
 const state = {
   loading: false,
   statusRegister: null,
+  statusUpdate: null,
   token: null,
   loggedIn: false,
   user: {},
@@ -115,6 +116,18 @@ const actions = {
     }
     commit(AUTH_SET_LOADING, true)
     return state.loggedIn
+  },
+  async actionUpdateUserInformation ({ commit }, { params }) {
+    let response = await UserService.updateUserInformation(params)
+    try {
+      if (response.status === 200) {
+        commit(AUTH_SET_ERROR, { error: [] })
+        commit(AUTH_SET_USER, response.data.record)
+      }
+    } catch (err) {
+      commit(AUTH_SET_ERROR, { error: err })
+    }
+    return response.data
   }
 }
 
