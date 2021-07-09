@@ -114,5 +114,24 @@
   },
   "errors": {
     "email_required": "The email field is required."
+  },
+  "post": {
+    "pet_name": "Pet name",
+    "new_post": "New post",
+    "update_post": "Update post code",
+    "list": "List post",
+    "new_post": "New post",
+    "message": {
+      "create_success": "New pets added successfully"
+    },
+    "field": {
+      "id": "ID",
+      "avatar": "Avatar",
+      "name": "Name",
+      "price": "Price"
+    },
+    "placeholder": {
+      "price": "Enter link price"
+    }
   }
 }
