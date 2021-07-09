@@ -1,8 +1,7 @@
 <template>
   <div id="home">
-    <h1 class="text-home">{{ $t('home') }}</h1>
     <div class="flex">
-      <div v-for="pet in pets" :key='pet.id' class="child">
+      <div v-for="pet in pets" :key='pet.id' class="child col-md-3">
       <b-card
       :title="pet.name"
       :img-src="pet.avatar"
@@ -43,7 +42,8 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 #home {
-  background: burlywood;
+  padding: 10vh 150px;
+  background-color: #FFF0F5;
 }
 .text-home {
   display: flex;
@@ -55,6 +55,7 @@ export default {
 .child {
   flex: 21%;
   text-align: -webkit-center;
+  padding-bottom: 20px;
 }
 .flex {
   display: flex;
