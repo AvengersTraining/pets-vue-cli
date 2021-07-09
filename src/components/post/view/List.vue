@@ -4,11 +4,19 @@
     <b-button @click="showModalUpdateOrCreate(null)" type="button" size="sm" variant="primary" class="mb-3 float-end">
       <b-icon icon="plus"></b-icon>{{ $t('common.btn_create') }}</b-button>
     <div id="list-posts">
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        aria-controls="list-posts"
+      ></b-pagination>
       <b-table
         :items="posts"
         :fields="fields"
         :sort-by.sync="sortBy"
         :sort-desc.sync="sortDesc"
+        :per-page="perPage"
+        :current-page="currentPage"
         label-sort-asc
         label-sort-clear
         label-sort-desc
@@ -59,6 +67,8 @@ export default {
   },
   data () {
     return {
+      perPage: 10,
+      currentPage: 1,
       sortBy: 'id',
       sortDesc: true,
       editingId: null,
@@ -79,6 +89,11 @@ export default {
       .then((res) => {
         this.posts = res
       })
+  },
+  computed: {
+    rows: function () {
+      return this.posts.length
+    }
   },
   methods: {
     async showModalUpdateOrCreate (id = null) {
